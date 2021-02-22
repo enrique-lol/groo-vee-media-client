@@ -9,6 +9,7 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import AllArticles from './components/AllArticles/AllArticles.js'
 
 class App extends Component {
   constructor (props) {
@@ -66,6 +67,12 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
+
+        <Route exact path='/' render={() => (
+          <Fragment>
+            <AllArticles />
+          </Fragment>
+        )} />
       </Fragment>
     )
   }
