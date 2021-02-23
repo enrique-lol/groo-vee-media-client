@@ -11,6 +11,9 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import AllArticles from './components/AllArticles/AllArticles.js'
 
+// Routes
+import ViewArticle from './routes/ViewArticle.js'
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -73,6 +76,7 @@ class App extends Component {
             <AllArticles />
           </Fragment>
         )} />
+        <Route path="/:id" component={ViewArticle}/>
       </Fragment>
     )
   }

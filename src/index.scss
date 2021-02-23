@@ -1,1 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
+
+$page-bg-green: #9BAA99;
+$nav-bg-green: #828D80;
+
+body {
+  background-color: $page-bg-green;
+}
+
+nav {
+  background-color: $nav-bg-green;
+}
