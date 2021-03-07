@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
+// Routes/pages
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
@@ -10,9 +11,11 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 // import AllArticles from './components/AllArticles/AllArticles.js'
-
-// Routes
 // import ViewArticle from './routes/ViewArticle.js'
+import IndexArticles from './routes/IndexArticles.js'
+import ViewArticle from './routes/ViewArticle.js'
+import CreateArticle from './routes/CreateArticle.js'
+import UpdateArticle from './routes/UpdateArticle.js'
 
 class App extends Component {
   constructor (props) {
@@ -69,6 +72,18 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/home' render={() => (
+            <IndexArticles msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/home/create-article' render={() => (
+            <CreateArticle msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/home/articles/:id' render={() => (
+            <ViewArticle msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/home/articles/:id/update/' render={() => (
+            <UpdateArticle msgAlert={this.msgAlert} user={user} />
+          )} />
         </main>
 
       </Fragment>
@@ -76,4 +91,7 @@ class App extends Component {
   }
 }
 
+// <div>
+//   <Route path="/index-articles" component={IndexArticles}/>
+// </div>
 export default App

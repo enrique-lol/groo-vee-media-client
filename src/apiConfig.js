@@ -4,6 +4,9 @@ const apiUrls = {
   development: 'http://localhost:4741'
 }
 
+// Deployed Server URL:
+// https://aqueous-atoll-85096.herokuapp.com
+
 if (window.location.hostname === 'localhost') {
   apiUrl = apiUrls.development
 } else {
