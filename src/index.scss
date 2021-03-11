@@ -1,7 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
-$page-bg-green: #9BAA99;
-$nav-bg-green: #828D80;
+$page-bg-green: #9baa99;
+$nav-bg-green: #828d80;
+$opaquewhite: rgba(255, 255, 255, .1);
 
 body {
   background-color: $page-bg-green;
@@ -9,4 +10,18 @@ body {
 
 nav {
   background-color: $nav-bg-green;
+}
+
+.article-container {
+  border: 3px solid blue;
+  display: flex;
+  // flex-direction: row-reverse;
+  // flex-wrap: wrap;
+  // justify-content: space-around;
+}
+
+.article-card {
+  background-color: $opaquewhite;
+  border: 1px solid red;
+  border-radius: 15px;
 }

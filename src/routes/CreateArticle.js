@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 // import article functions
 import { articleCreate } from '../api/article-auth.js'
-
+// import shared Article form
 import ArticleForm from '../shared/ArticleForm.js'
 
 // Class
@@ -14,7 +14,9 @@ class CreateArticle extends Component {
     this.state = {
       article: {
         title: '',
-        content: ''
+        content: '',
+        authorName: '',
+        mainImageUrl: ''
       },
       createdId: null
     }

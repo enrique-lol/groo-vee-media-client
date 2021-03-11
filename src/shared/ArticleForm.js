@@ -18,6 +18,22 @@ const ArticleForm = ({ article, handleSubmit, handleChange }) => (
       value={article.content}
       onChange={handleChange}
     />
+    <input
+      required
+      name="authorName"
+      type="text"
+      placeholder="author"
+      value={article.authorName}
+      onChange={handleChange}
+    />
+    <input
+      required
+      name="mainImageUrl"
+      type="text"
+      placeholder="1 image url"
+      value={article.mainIamgeUrl}
+      onChange={handleChange}
+    />
     <button type="submit">Submit</button>
   </form>
 )

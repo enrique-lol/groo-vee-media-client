@@ -2,9 +2,12 @@
 // destructure Component out of the react library
 import React, { Component } from 'react'
 // Import Link component from react-router-dom
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { articleIndex } from '../api/article-auth.js'
+
+// import React Bootstrap elements
+import { Card } from 'react-bootstrap'
 
 // 2. A class
 class IndexArticles extends Component {
@@ -44,9 +47,15 @@ class IndexArticles extends Component {
       // if we have articles to display, display them
       // implicit return JSX (single line arrow function)
       const articleList = articles.map(article => (
-        <li key={article.id}>
-          <Link to={`/home/articles/${article.id}`}>{article.title}</Link>
-        </li>
+        <Card className='article-card' key={article.id} style={{ width: '18rem' }}>
+          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Body>
+            <Card.Title>{article.title}</Card.Title>
+            <Card.Text>
+              {article.authorName}
+            </Card.Text>
+          </Card.Body>
+        </Card>
       ))
       // const articleList = articles.map(article => {
       //   const title = article.title
@@ -55,20 +64,29 @@ class IndexArticles extends Component {
       //   return <li key={key}>{title}</li>
       // })
 
+      // <li key={article.id}>
+      //  <Link to={`/home/articles/${article.id}`}>{article.title}</Link>
+      // </li>
+      // const articleCardArray = []
+      // const newList = function () {
+      //   articleList.forEach((item, i) => {
+      //     console.log(item)
+      //   })
+      // }
+
       articlesJsx = (
         <ul>
           {articleList}
         </ul>
       )
-      // BAD: don't do this, this creates a JS object rather than
-      // referenceing a variable inside of JSX
-      // articlesJsx = {articleList}
     }
 
     return (
       <React.Fragment>
-        <h1>My Articles</h1>
-        {articlesJsx}
+        <h1>Featured Articles</h1>
+        <section className='article-container'>
+          {articlesJsx}
+        </section>
       </React.Fragment>
     )
   }
