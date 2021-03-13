@@ -1,38 +1,37 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+import { Navbar, Button, NavDropdown } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#home/create-article">Create an Article</Nav.Link>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link className='about' href="#/about"> <Button variant="outline-warning">Learn About Waiv Magazine</Button>{' '}</Nav.Link>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <Nav.Link className='about' href="#/about">Learn About Waiv Magazine</Nav.Link>
+    <Nav.Link className='nav-element' href="#sign-in"><Button variant='outline-light'>Log In</Button></Nav.Link>
+    <Nav.Link className='nav-element' href="#sign-up"><Button variant='warning'>Join for Free</Button></Nav.Link>
   </Fragment>
 )
 
 const home = (
   <Navbar.Brand href="#/home">
-      Groo Vee media
+    <p className='roboto-mono'>Waiv Magazine</p>
   </Navbar.Brand>
 )
 
 const unHome = (
   <Navbar.Brand href="#/">
-      Groo Vee media
+    <p className='roboto-mono'>Waiv Magazine</p>
   </Navbar.Brand>
 )
 // const alwaysOptions = (
 //   <Fragment>
 //     <Nav.Link href="#/">Home</Nav.Link>
 //   </Fragment>
-// )
+// )         { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
 
 const Header = ({ user }) => (
   <Navbar >
@@ -40,7 +39,12 @@ const Header = ({ user }) => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
+        { user && <NavDropdown className='dropdown' title={user.email} id="collasible-nav-dropdown">
+          <NavDropdown.Item href="#home/create-article">Create</NavDropdown.Item>
+          <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item id='n' href="#sign-out">Sign Out</NavDropdown.Item>
+        </NavDropdown>}
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>
     </Navbar.Collapse>

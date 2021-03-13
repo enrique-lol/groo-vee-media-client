@@ -1,96 +1,68 @@
-// 1. some imports
-// destructure Component out of the react library
 import React, { Component } from 'react'
-// Import Link component from react-router-dom
-// import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import { articleIndex } from '../api/article-auth.js'
-
-// import React Bootstrap elements
+// // import React Bootstrap elements
 import { Card } from 'react-bootstrap'
 
-// 2. A class
-class IndexArticles extends Component {
-  // 1. set up the class
+class ArticleIndex extends Component {
   constructor (props) {
     super(props)
-
-    // state will make our constructor "useful"
     this.state = {
-      // loading: false
       articles: null
     }
   }
-
   componentDidMount () {
-    event.preventDefault()
-    const { user } = this.props
+    const { msgAlert, user } = this.props
+    if (!user) {
+      msgAlert({
+        heading: 'Log In or Join For Free',
+        message: 'For free access, create an account',
+        variant: 'warning'
+      })
+    }
     articleIndex(user)
-      // .then(() => this.setState({ article: res.data.article }))
       .then(res => this.setState({ articles: res.data.articles }))
-      .catch(console.error)
+      .catch(error => {
+        msgAlert({
+          heading: 'Error',
+          message: error.message,
+          variant: 'danger'
+        })
+      })
   }
-
-  // 2. show some stuff in the DOM
   render () {
-    let articlesJsx
-
     const { articles } = this.state
-    // if we are loading (articles is null)
-    // display a loading message
-    if (articles === null) {
-      articlesJsx = 'Loading...'
-    } else if (articles.length === 0) {
-      // return
-      articlesJsx = 'You have 0 articles'
-    } else {
-      // if we have articles to display, display them
-      // implicit return JSX (single line arrow function)
-      const articleList = articles.map(article => (
-        <Card className='article-card' key={article.id} style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+    if (!articles) {
+      return (
+        <p>Loading ...</p>
+      )
+    }
+    if (articles.length === 0) {
+      return (
+        <p>0 Live Articles</p>
+      )
+    }
+
+    const articlesJsx = articles.map(article => (
+      <Link to={`/home/articles/${article.id}`} key={article.id}>
+        <Card className='article-card'>
+          <Card.Img variant="top" src={article.mainImageUrl} />
           <Card.Body>
-            <Card.Title>{article.title}</Card.Title>
+            <Card.Title className='roboto-mono thicc-letters'>{article.title}</Card.Title>
             <Card.Text>
               {article.authorName}
             </Card.Text>
           </Card.Body>
         </Card>
-      ))
-      // const articleList = articles.map(article => {
-      //   const title = article.title
-      //   const key = article._id
-      //   // explicit return of JSX
-      //   return <li key={key}>{title}</li>
-      // })
-
-      // <li key={article.id}>
-      //  <Link to={`/home/articles/${article.id}`}>{article.title}</Link>
-      // </li>
-      // const articleCardArray = []
-      // const newList = function () {
-      //   articleList.forEach((item, i) => {
-      //     console.log(item)
-      //   })
-      // }
-
-      articlesJsx = (
-        <ul>
-          {articleList}
-        </ul>
-      )
-    }
-
+      </Link>
+    ))
     return (
-      <React.Fragment>
-        <h1>Featured Articles</h1>
-        <section className='article-container'>
-          {articlesJsx}
-        </section>
-      </React.Fragment>
+      <div className='article-container'>
+        {articlesJsx}
+      </div>
     )
   }
 }
 
-// 3. some exports
-export default IndexArticles
+// style={{ width: '18rem' }}
+export default ArticleIndex

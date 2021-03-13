@@ -31,7 +31,7 @@ const ArticleForm = ({ article, handleSubmit, handleChange }) => (
       name="mainImageUrl"
       type="text"
       placeholder="1 image url"
-      value={article.mainIamgeUrl}
+      value={article.mainImageUrl}
       onChange={handleChange}
     />
     <button type="submit">Submit</button>

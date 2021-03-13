@@ -5,12 +5,12 @@ import axios from 'axios'
 export const articleIndex = (user) => {
   return axios({
     url: apiUrl + '/articles',
-    method: 'GET',
+    method: 'GET'
     // Add an authorization header
-    headers: {
-      // we need the user, so we have access to their token
-      'Authorization': `Bearer ${user.token}`
-    }
+    // headers: {
+    //   // we need the user, so we have access to their token
+    //   'Authorization': `Bearer ${user.token}`
+    // }
   })
 }
 // Create an Article //////////////////////////////////////////////////////////

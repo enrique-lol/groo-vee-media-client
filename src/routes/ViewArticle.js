@@ -58,16 +58,18 @@ class ViewArticle extends Component {
     }
     if (article) {
       articleJsx = (
-        <Fragment>
-          <h2>{article.title}</h2>
-          <h4>Author: {article.authorName}</h4>
-          <p>image url: {article.mainImageUrl}</p>
-          <p>Content: {article.content}</p>
+        <div className='article-main'>
+          <h2 className='roboto-mono'>{article.title}</h2>
+          <h4 className='roboto-mono'>{article.authorName}</h4>
+          <div className='art-img-container'>
+            <img className='article-image' src={article.mainImageUrl}></img>
+          </div>
+          <p className='art-text raleway'>{article.content}</p>
           <button onClick={this.deleteArticle}>Delete Article</button>
           <Button className='mr-2' variant="outline-info">
             <Link to={`/home/articles/${article.id}/update/`}>Update</Link>
           </Button>
-        </Fragment>
+        </div>
       )
       // <button>
       //   <Link to={`/update-book/${book._id}`}>Update Article</Link>
