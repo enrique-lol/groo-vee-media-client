@@ -16,7 +16,8 @@ import IndexArticles from './routes/IndexArticles.js'
 import ViewArticle from './routes/ViewArticle.js'
 import CreateArticle from './routes/CreateArticle.js'
 import UpdateArticle from './routes/UpdateArticle.js'
-import AboutHome from './routes/AboutHome.js'
+// import AboutHome from './routes/AboutHome.js'
+import FutureFeature from './routes/FutureFeature.js'
 
 class App extends Component {
   constructor (props) {
@@ -65,7 +66,7 @@ class App extends Component {
             <IndexArticles msgAlert={this.msgAlert} />
           )} />
           <Route exact path='/about' render={() => (
-            <AboutHome msgAlert={this.msgAlert} setUser={this.setUser} />
+            <FutureFeature msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />

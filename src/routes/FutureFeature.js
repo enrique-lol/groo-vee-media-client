@@ -15,7 +15,14 @@ class FutureFeature extends Component {
   render () {
     return (
       <Fragment>
-        <Card body>This feature is under development. Please visit at a later time. Thank You!</Card>
+        <Card className='uc-card' bg='warning' style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>Under Construction</Card.Title>
+            <Card.Text>
+          This feature is in the process of being developed. Please visit at a later time. Thank You!
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </Fragment>
     )
   }
