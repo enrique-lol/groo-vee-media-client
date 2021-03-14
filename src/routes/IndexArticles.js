@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { articleIndex } from '../api/article-auth.js'
-// // import React Bootstrap elements
 import { Card } from 'react-bootstrap'
 
 class ArticleIndex extends Component {
@@ -57,12 +56,16 @@ class ArticleIndex extends Component {
       </Link>
     ))
     return (
-      <div className='article-container'>
-        {articlesJsx}
-      </div>
+      <Fragment>
+        <div className='divider'>
+          <h2 className='featured-text raleway'>Featured</h2>
+        </div>
+        <div className='article-container'>
+          {articlesJsx}
+        </div>
+      </Fragment>
     )
   }
 }
 
-// style={{ width: '18rem' }}
 export default ArticleIndex

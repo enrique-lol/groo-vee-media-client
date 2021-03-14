@@ -48,6 +48,34 @@ Button {
   font-family: 'Roboto Mono', monospace;
 }
 
+.divider {
+  border-bottom: 3px solid $black;
+  // margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  width: 100%;
+}
+
+.featured-text {
+  color: $white;
+  font-weight: bold;
+  margin-right: 5%;
+  text-align: right;
+}
+
+.community-comments-text {
+  color: $white;
+  font-weight: bold;
+  margin-left: 5%;
+  text-align: left;
+  width: auto;
+}
+
+.comm-comm {
+  margin-bottom: 0;
+}
+
 .about {
   margin-bottom: auto;
   margin-top: auto;
@@ -110,7 +138,7 @@ Button {
 
 .card {
   height: auto;
-  margin-top: 5%;
+  margin-top: 8%;
   width: 100%;
 }
 
@@ -120,5 +148,10 @@ Button {
 }
 
 a:hover {
-  color: $black;
+  color: $soft-yellow;
+}
+
+.uc-card {
+  margin-bottom: 2%;
+  margin-top: 2%;
 }

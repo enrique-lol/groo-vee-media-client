@@ -1,13 +1,9 @@
 // Imports
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
-
-// import article functions
 import { articleCreate } from '../api/article-auth.js'
-// import shared Article form
 import ArticleForm from '../shared/ArticleForm.js'
 
-// Class
 class CreateArticle extends Component {
   constructor (props) {
     super(props)
@@ -47,11 +43,6 @@ class CreateArticle extends Component {
     })
   }
 
-  // componentDidMount - when we want something to happen right away
-  // when the page/component loads
-  // show, update, index - want to make requests when that component loads
-  // Create - no data yet, no reason to use componentDidMount
-
   render () {
     const { article, createdId } = this.state
     if (createdId) {
@@ -70,5 +61,4 @@ class CreateArticle extends Component {
   }
 }
 
-// Export
 export default CreateArticle
